@@ -52,7 +52,7 @@ var ufotbody = d3.select("tbody");
 data.forEach((ufo) => {
     // Update cells text with values from array
     var row = ufotbody.append("tr");
-    Object.entries(ufo).ForEach(([key,value]){
+    Object.entries(ufo).forEach(([key,value]) => {
         var cell = row.append("td");
         cell.text(value);
     });
@@ -62,5 +62,18 @@ data.forEach((ufo) => {
 });
 
 // 4. Use Date form ,Based on imputs, search through data
-//Create button function L 14 D3 A 04 
-var button = d3.select("#click-me")
+//Create button function L 14 D3 A 8|9 
+var button = d3.select("click", function() {
+    //Selecting input element  L 40 HTML
+    // class form-control id datetime
+    var inputElement = d3.select("#datetime.form-control");
+
+    //Get the value property of the input element 
+    var inputValue = inputElement.property("value");
+
+    console.log(inputValue);
+    console.log(tableData);
+
+    var filteredData = tableData.filter(input => input.datetime ===inputValue);
+
+});
