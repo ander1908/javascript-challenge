@@ -61,12 +61,18 @@ data.forEach((ufo) => {
 
 });
 
+//console.log(tableData);
 // 4. Use Date form ,Based on imputs, search through data
 //Create button function L 14 D3 A 8|9 
-var button = d3.select("click", function() {
+// button name on L44 in html. Fixed
+var button = d3.select("#filter-btn");
+button.on("click", function() {
+    
+    //need to clear table body data
+    ufotbody.html("");
     //Selecting input element  L 40 HTML
     // class form-control id datetime
-    var inputElement = d3.select("#datetime.form-control");
+    var inputElement = d3.select("#datetime");
 
     //Get the value property of the input element 
     var inputValue = inputElement.property("value");
@@ -74,6 +80,21 @@ var button = d3.select("click", function() {
     console.log(inputValue);
     console.log(tableData);
 
-    var filteredData = tableData.filter(input => input.datetime ===inputValue);
+    var filteredData = tableData.filter(input => input.datetime === inputValue);
+    console.log(filteredData);
+    
+    //Repeat Initial stage for the filteredData
+    filteredData.forEach((fd) => {
+        // Update cells text with values from array
+        var row = ufotbody.append("tr");
+        Object.entries(fd).forEach(([key,value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    
+    
+    
+    });
+
 
 });
