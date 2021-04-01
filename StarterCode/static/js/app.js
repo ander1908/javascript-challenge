@@ -79,8 +79,15 @@ button.on("click", function() {
 
     console.log(inputValue);
     console.log(tableData);
-
-    var filteredData = tableData.filter(input => input.datetime === inputValue);
+    // Initial input is only for datetime inputs. Setting up OR Statements for other searches
+    var filteredData = tableData.filter(input => input.datetime === inputValue ||
+        input.city === inputValue ||
+        input.state === inputValue ||
+        input.country === inputValue ||
+        input.shape === inputValue ||
+        input.durationMinutes === inputValue    
+              
+        );
     console.log(filteredData);
     
     //Repeat Initial stage for the filteredData
